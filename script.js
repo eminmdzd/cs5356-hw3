@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const navLinksContainer = document.getElementById("nav-links");
   const navContainer = document.querySelector(".nav-container");
 
+  const themeToggle = document.getElementById("theme-toggle");
+  const htmlElement = document.documentElement;
+
+  themeToggle.addEventListener("click", () => {
+    htmlElement.classList.toggle("dark-mode");
+  });
+
   // Read query parameter "page" (default to "home.html" if not provided)
   const urlParams = new URLSearchParams(window.location.search);
   const page = urlParams.get("page") || "home.html";

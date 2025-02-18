@@ -1,25 +1,50 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+/* Define CSS variables for light mode */
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --accent-color: #c44;
+    --nav-bg: #fff;
+    --header-bg: #fff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode overrides when .dark-mode is applied to <html> */
+html.dark-mode {
+    --bg-color: #222;
+    --text-color: #ddd;
+    --nav-bg: #222;
+    --header-bg: #222;
+}
+
+/* Base HTML & Body */
+html {
     scroll-behavior: smooth;
     max-height: max-content;
+    color-scheme: light dark;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-color);
 }
 
+/* Header & Navbar */
 header {
     position: sticky;
     top: 0;
     z-index: 999;
-    background: #fff;
+    background: var(--header-bg);
 }
 
 .navbar {
@@ -27,7 +52,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #fff;
+    background-color: var(--nav-bg);
 }
 
 .logo {
@@ -51,14 +76,14 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-weight: 500;
     transition: color 0.2s ease-in-out;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: #c44;
+    color: var(--accent-color);
 }
 
 .nav-toggle {
@@ -72,15 +97,66 @@ header {
 .nav-toggle .hamburger {
     width: 25px;
     height: 3px;
-    background: #333;
+    background: var(--text-color);
     margin: 4px 0;
     transition: all 0.3s;
 }
 
+#theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--text-color);
+    border-radius: 20px;
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle .sun,
+#theme-toggle .moon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+#theme-toggle:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+html:not(.dark-mode) #theme-toggle .sun {
+    display: none;
+}
+
+html:not(.dark-mode) #theme-toggle .moon {
+    display: inline;
+}
+
+html.dark-mode #theme-toggle .sun {
+    display: inline;
+}
+
+html.dark-mode #theme-toggle .moon {
+    display: none;
+}
+
+html.dark-mode #theme-toggle {
+    background: linear-gradient(45deg, #555, #333);
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+html.dark-mode #theme-toggle:hover {
+    background: var(--accent-color);
+    color: #fff
+}
 main#content {
     padding: 2rem;
 }
 
+/* Hero Section */
 .hero {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -90,7 +166,7 @@ main#content {
     padding: 2rem;
 }
 
-
+/* Profile Section */
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -121,7 +197,6 @@ main#content {
     margin-bottom: 0.5rem;
 }
 
-
 .title {
     font-size: 1.2rem;
     color: #666;
@@ -135,6 +210,7 @@ main#content {
     color: #555;
 }
 
+/* Social Links */
 .social-links {
     display: flex;
     gap: 0.75rem;
@@ -153,6 +229,11 @@ main#content {
     height: 48px;
 }
 
+/* In dark mode, invert social icon images */
+html.dark-mode .social-icon img {
+    filter: invert(1);
+}
+
 .social-icon .red {
     position: absolute;
     top: 0;
@@ -169,6 +250,7 @@ main#content {
     opacity: 0;
 }
 
+/* Stats Section */
 .stats-column {
     display: flex;
     flex-direction: column;
@@ -180,45 +262,46 @@ main#content {
 }
 
 .stats-heading {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .stat-item {
-  font-size: 1rem;
-  color: #333;
-  padding: 0.75rem 0;
-  transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0.75rem 0;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .stat-item:not(:last-child) {
-  padding-bottom: 25px;
-  border-bottom: 0.5px solid #c44;
+    padding-bottom: 25px;
+    border-bottom: 0.5px solid var(--accent-color);
 }
 
-.stat-item-emphasize{
-  font-weight: bold;
-  color: #c44;
+.stat-item-emphasize {
+    font-weight: bold;
+    color: var(--accent-color);
 }
 
 .stat-item:hover {
-  color: #c44;
-  transform: translateY(-4px);
+    color: var(--accent-color);
+    transform: translateY(-4px);
 }
 
 .stat-divider {
-  height: 1px;
-  background-color: #e0e0e0;
-  width: 100%;
-  margin: 0.5rem 0;
+    height: 1px;
+    background-color: var(--border-color);
+    width: 100%;
+    margin: 0.5rem 0;
 }
 
+/* Typed Text Animation */
 .typed-text {
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 0.15em solid #c44;
+    border-right: 0.15em solid var(--accent-color);
     animation: typing 4s steps(20, end) forwards, blink-cursor 0.75s step-end 4;
 }
 
@@ -242,13 +325,13 @@ main#content {
     }
 }
 
-
 .typed-text::after {
     animation: none;
     content: '';
     border-right: none !important;
 }
 
+/* Responsive Styles */
 @media (max-width: 1024px) {
     .nav-toggle {
         display: flex;
@@ -261,8 +344,8 @@ main#content {
         right: 0;
         width: 200px;
         padding: 1rem;
-        background-color: #fff;
-        box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.1);
+        background-color: var(--nav-bg);
+        box-shadow: -2px 2px 8px var(--shadow-color);
         transform: translateY(-20px);
         opacity: 0;
         pointer-events: none;
@@ -286,18 +369,20 @@ main#content {
         justify-content: center !important;
         text-align: center !important;
         padding: 2rem 1rem;
+        min-height: unset;
     }
 
     .profile-info {
         align-items: center;
         padding-bottom: 50px;
-        border-bottom: 0.5px solid #e0e0e0;
+        border-bottom: 0.5px solid var(--border-color);
     }
 
     .profile-header {
         flex-direction: column;
         align-items: center;
     }
+
     .profile-text {
         margin-left: 0;
         text-align: center;
@@ -334,6 +419,7 @@ main#content {
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
         padding: 2rem 6rem;
+        min-height: unset;
     }
 
     .profile-header {
@@ -370,4 +456,28 @@ main#content {
     .profile-text {
         margin-left: 1.5rem;
     }
+}
+
+html.dark-mode body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+html.dark-mode .description {
+    color: #fff;
+}
+
+.profile-text {
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+html.dark-mode .profile-text {
+    color: #fff;
+}
+
+html.dark-mode h2 {
+    color: #fff;
 }
