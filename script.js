@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
   loadPage(page);
   updateActiveLink(page);
 
-  // Link click: update content, history, and close menu if open
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
@@ -19,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       updateActiveLink(url);
       loadPage(url);
       history.pushState({ page: url }, "", this.getAttribute("href"));
+      // Close the hamburger menu on mobile if open
       if (
         window.innerWidth < 768 &&
         navLinksContainer.classList.contains("show")
@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Handle browser back/forward navigation
   window.addEventListener("popstate", function (e) {
     const page = e.state ? e.state.page : "home.html";
     loadPage(page);
@@ -59,38 +58,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Toggle hamburger menu on click (for tap/click)
-  navToggle.addEventListener("click", () => {
-    if (window.innerWidth < 768) {
-      navLinksContainer.classList.toggle("show");
-      navToggle.setAttribute(
-        "aria-expanded",
-        navLinksContainer.classList.contains("show")
-      );
+  // Hover behavior: open menu on mouseenter over the toggle
+  navToggle.addEventListener("mouseenter", () => {
+    if (window.innerWidth < 1024) {
+      navLinksContainer.classList.add("show");
+      navToggle.setAttribute("aria-expanded", "true");
     }
   });
 
-  // Close hamburger menu when mouse leaves the nav-container (for hover)
+  // Close menu when mouse leaves the entire nav-container
   navContainer.addEventListener("mouseleave", () => {
-    if (
-      window.innerWidth < 1024 &&
-      navLinksContainer.classList.contains("show")
-    ) {
+    if (window.innerWidth < 1024) {
       navLinksContainer.classList.remove("show");
       navToggle.setAttribute("aria-expanded", "false");
     }
   });
 
-  // Optional: close menu when clicking outside the nav-container
+  // Tap/click behavior: toggle menu on click of the nav-toggle
+  navToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (window.innerWidth < 768) {
+      navLinksContainer.classList.toggle("show");
+      navToggle.setAttribute(
+        "aria-expanded",
+        navLinksContainer.classList.contains("show") ? "true" : "false"
+      );
+    }
+  });
+
+  // Also close menu when clicking outside the nav-container
   document.addEventListener("click", (e) => {
     if (
       window.innerWidth < 768 &&
-      navLinksContainer.classList.contains("show")
+      navLinksContainer.classList.contains("show") &&
+      !navContainer.contains(e.target)
     ) {
-      if (!navContainer.contains(e.target)) {
-        navLinksContainer.classList.remove("show");
-        navToggle.setAttribute("aria-expanded", "false");
-      }
+      navLinksContainer.classList.remove("show");
+      navToggle.setAttribute("aria-expanded", "false");
     }
   });
 
