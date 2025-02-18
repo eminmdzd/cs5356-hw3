@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Personal Website</title>
+    <title>Emin Mamedzade</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
 </head>
@@ -13,28 +13,24 @@
     <header>
         <nav class="navbar">
             <div class="logo">MySite</div>
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="home.html" class="nav-link active">Home</a></li>
-                <li><a href="about.html" class="nav-link">About Me</a></li>
-                <li>
-                    <a href="blog.html" class="nav-link">Blog</a>
-                    <ul class="sub-nav">
-                        <li>
-                            <a href="blog/paper-summaries.html" class="nav-link">Paper Summaries</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+            <div class="nav-container">
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"
+                    aria-controls="nav-links">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html?page=home.html" class="nav-link active">Home</a></li>
+                    <li><a href="index.html?page=about.html" class="nav-link">About Me</a></li>
+                    <li><a href="index.html?page=paper-summaries.html" class="nav-link">Paper Summaries</a></li>
+                    <li><a href="index.html?page=projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="index.html?page=contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
-    <main id="content">
-    </main>
+    <main id="content"></main>
 </body>
 
 </html>

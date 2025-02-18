@@ -1,3 +1,9 @@
+<script>
+    if (window.top === window.self) {
+        var page = window.location.pathname.split('/').pop();
+        window.location.href = "index.html?page=" + page;
+    }
+</script>
 <section>
     <h1>About Me</h1>
     <p>This page tells you a little bit about who I am.</p>
