@@ -1,0 +1,52 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling the header and navigation */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 1rem;
+    position: relative;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Dropdown submenu styling */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    padding: 0.5rem 0;
+}
+
+nav ul li:hover>ul {
+    display: block;
+}
+
+nav ul li ul li {
+    margin: 0;
+    padding: 0.5rem 1rem;
+}
+
+/* Main content styling */
+main#content {
+    padding: 2rem;
+}
