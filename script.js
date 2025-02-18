@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then((html) => {
         contentDiv.innerHTML = html;
+        if (url === "api.html") {
+          initializeJokeFeature();
+        }
       })
       .catch(() => {
         contentDiv.innerHTML = "<p>Error loading page.</p>";
@@ -65,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Hover behavior: open menu on mouseenter over the toggle
   navToggle.addEventListener("mouseenter", () => {
     if (window.innerWidth < 1024) {
       navLinksContainer.classList.add("show");
@@ -73,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Close menu when mouse leaves the entire nav-container
   navContainer.addEventListener("mouseleave", () => {
     if (window.innerWidth < 1024) {
       navLinksContainer.classList.remove("show");
@@ -81,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Tap/click behavior: toggle menu on click of the nav-toggle
   navToggle.addEventListener("click", (e) => {
     e.stopPropagation();
     if (window.innerWidth < 768) {
@@ -92,8 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
   });
-
-  // Also close menu when clicking outside the nav-container
   document.addEventListener("click", (e) => {
     if (
       window.innerWidth < 768 &&
@@ -113,4 +111,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   adjustNav();
   window.addEventListener("resize", adjustNav);
+
+  function initializeJokeFeature() {
+    const jokeButton = document.getElementById("joke-button");
+    const setupEl = document.getElementById("setup");
+    const punchlineEl = document.getElementById("punchline");
+
+    if (jokeButton) {
+      jokeButton.addEventListener("click", () => {
+        fetch("https://official-joke-api.appspot.com/random_joke")
+          .then((response) => response.json())
+          .then((data) => {
+            setupEl.textContent = data.setup;
+            punchlineEl.textContent = data.punchline;
+          })
+          .catch((error) => {
+            console.error("Error fetching joke:", error);
+            setupEl.textContent = "Oops, something went wrong!";
+            punchlineEl.textContent = "";
+          });
+      });
+    }
+  }
 });

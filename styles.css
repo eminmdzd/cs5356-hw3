@@ -481,3 +481,42 @@ html.dark-mode .profile-text {
 html.dark-mode h2 {
     color: #fff;
 }
+
+
+#joke-button {
+    background-color: var(--accent-color, #c44);
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#joke-button:hover {
+    background-color: #a33;
+}
+
+#joke-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 1.5rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    text-align: center;
+    border-radius: 6px;
+}
+
+#setup {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#punchline {
+    font-style: italic;
+    color: #555;
+    margin-top: 0.5rem;
+}
