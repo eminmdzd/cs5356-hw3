@@ -10,26 +10,31 @@
 </head>
 
 <body>
-    <!-- Header with Semantic Navigation -->
     <header>
-        <nav>
-            <ul>
-                <li><a href="home.html" data-page="home">Home</a></li>
-                <li><a href="about.html" data-page="about">About Me</a></li>
+        <nav class="navbar">
+            <div class="logo">MySite</div>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="home.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Me</a></li>
                 <li>
-                    <a href="blog.html" data-page="blog">Blog</a>
-                    <ul>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <ul class="sub-nav">
                         <li>
-                            <a href="blog/paper-summaries.html" data-page="paper-summaries">Paper Summaries</a>
+                            <a href="blog/paper-summaries.html" class="nav-link">Paper Summaries</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="contact.html" data-page="contact">Contact</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
-
     <main id="content">
     </main>
 </body>
+
 </html>

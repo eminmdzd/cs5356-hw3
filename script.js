@@ -1,9 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll("nav a");
+document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll(".nav-link");
   const contentDiv = document.getElementById("content");
-
-  function loadPage(pageUrl) {
-    fetch(pageUrl)
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinksContainer = document.getElementById("nav-links");
+  loadPage("home.html");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const url = this.getAttribute("href");
+      if (navLinksContainer.classList.contains("show")) {
+        navLinksContainer.classList.remove("show");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+      document
+        .querySelectorAll(".nav-link")
+        .forEach((n) => n.classList.remove("active"));
+      this.classList.add("active");
+      loadPage(url);
+      history.pushState({ page: url }, "", url);
+    });
+  });
+  window.addEventListener("popstate", function (e) {
+    const page = e.state ? e.state.page : "home.html";
+    loadPage(page);
+  });
+  function loadPage(url) {
+    fetch(url)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -13,25 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((html) => {
         contentDiv.innerHTML = html;
       })
-      .catch((error) => {
+      .catch((err) => {
         contentDiv.innerHTML = "<p>Error loading page.</p>";
-        console.error("Error loading page:", error);
       });
   }
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      const pageUrl = link.getAttribute("href");
-      loadPage(pageUrl);
-      // Optionally update browser history (if needed)
-      history.pushState({ page: pageUrl }, "", pageUrl);
-    });
+  navToggle.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", !expanded);
+    navLinksContainer.classList.toggle("show");
   });
-
-  window.addEventListener("popstate", (event) => {
-    const pageUrl = event.state ? event.state.page : "home.html";
-    loadPage(pageUrl);
-  });
-
-  loadPage("home.html");
 });
