@@ -46,7 +46,7 @@ body {
 }
 
 /* ==========================================================================
-   HEADER & NAVBAR
+   HEADER, FOOTER & NAVBAR
    ========================================================================== */
 header {
     width: 100%;
@@ -117,6 +117,16 @@ header {
     /* 4px */
     transition: all 0.3s;
 }
+
+footer {
+    background-color: var(--header-bg);
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    max-height: 4rem;
+}
+
 
 /* ==========================================================================
    THEME TOGGLE (LIGHT/DARK MODE SWITCH)
