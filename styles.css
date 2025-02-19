@@ -364,6 +364,40 @@ html.dark-mode .social-icon img {
     animation: typing 4s steps(20, end) forwards, blink-cursor 0.75s step-end 4;
 }
 
+
+/* Contact Page Styles */
+.contact-section {
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--nav-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
+    text-align: center;
+}
+
+.contact-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.contact-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.contact-section a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
 @keyframes typing {
     from {
         width: 0;
