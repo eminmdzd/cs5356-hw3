@@ -48,6 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then((html) => {
         contentDiv.innerHTML = html;
+        if (document.querySelectorAll(".timeline-item").length > 0) {
+          setupTimelineObserver();
+        }
         if (url === "api.html") {
           initializeJokeFeature();
         }
@@ -107,6 +110,27 @@ document.addEventListener("DOMContentLoaded", function () {
       navToggle.setAttribute("aria-expanded", "false");
     }
   }
+
+  function setupTimelineObserver() {
+    const items = document.querySelectorAll(".timeline-item");
+    const observerOptions = {
+      threshold: 0.25, // Trigger when 25% of the item is visible
+    };
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        console.log(entry.target, entry.isIntersecting);
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          obs.unobserve(entry.target); // Unobserve so it stays active
+        }
+      });
+    }, observerOptions);
+
+    items.forEach((item) => {
+      observer.observe(item);
+    });
+  }
+
   adjustNav();
   window.addEventListener("resize", adjustNav);
 
