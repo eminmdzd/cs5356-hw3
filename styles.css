@@ -526,7 +526,7 @@ html.dark-mode .social-icon img {
     width: 0.1875rem;
     /* 3px */
     background-color: var(--accent-color);
-    top: 0;
+    top: 7rem;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
