@@ -1,11 +1,13 @@
-/* Global Styles */
+/* ==========================================================================
+   GLOBAL & CSS VARIABLES
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Define CSS variables for light mode */
+/* CSS Variables for Light Mode */
 :root {
     --bg-color: #fff;
     --text-color: #333;
@@ -16,7 +18,7 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Dark mode overrides when .dark-mode is applied to <html> */
+/* Dark Mode Overrides */
 html.dark-mode {
     --bg-color: #222;
     --text-color: #ddd;
@@ -24,10 +26,12 @@ html.dark-mode {
     --header-bg: #222;
 }
 
-/* Base HTML & Body */
+/* ==========================================================================
+   BASE STYLES (HTML & BODY)
+   ========================================================================== */
 html {
     scrollbar-color: var(--accent-color) var(--bg-color);
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     max-height: max-content;
     color-scheme: light dark;
     background-color: var(--bg-color);
@@ -41,16 +45,18 @@ body {
     /* overflow: hidden; */
 }
 
-/* Header & Navbar */
+/* ==========================================================================
+   HEADER & NAVBAR
+   ========================================================================== */
 header {
     width: 100%;
     position: sticky;
     top: 0;
-    width: 100%;
     z-index: 9999;
     background: var(--header-bg);
 }
- .navbar {
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,8 +90,12 @@ header {
     transition: color 0.2s ease-in-out;
 }
 
-.nav-links a:hover,
 .nav-links a.active {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.nav-links a:hover{
     color: var(--accent-color);
 }
 
@@ -98,21 +108,29 @@ header {
 }
 
 .nav-toggle .hamburger {
-    width: 25px;
-    height: 3px;
+    width: 1.5625rem;
+    /* 25px */
+    height: 0.1875rem;
+    /* 3px */
     background: var(--text-color);
-    margin: 4px 0;
+    margin: 0.25rem 0;
+    /* 4px */
     transition: all 0.3s;
 }
 
+/* ==========================================================================
+   THEME TOGGLE (LIGHT/DARK MODE SWITCH)
+   ========================================================================== */
 #theme-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    border: 2px solid var(--text-color);
-    border-radius: 20px;
+    border: 0.125rem solid var(--text-color);
+    /* 2px */
+    border-radius: 1.25rem;
+    /* 20px */
     background-color: transparent;
     color: var(--text-color);
     cursor: pointer;
@@ -124,11 +142,23 @@ header {
     font-size: 1.2rem;
     line-height: 1;
 }
-#theme-toggle:hover {
-    background-color: var(--accent-color);
-    color: #fff;
+
+/* Hover effects on devices that support hover */
+@media (hover: hover) {
+    #theme-toggle:hover {
+        background-color: var(--accent-color);
+        color: #fff;
+    }
 }
 
+@media (hover: none) {
+    #theme-toggle:hover {
+        background-color: transparent;
+        color: var(--text-color);
+    }
+}
+
+/* Toggle Icon Visibility */
 html:not(.dark-mode) #theme-toggle .sun {
     display: none;
 }
@@ -153,13 +183,17 @@ html.dark-mode #theme-toggle {
 
 html.dark-mode #theme-toggle:hover {
     background: var(--accent-color);
-    color: #fff
+    color: #fff;
 }
+
+/* ==========================================================================
+   MAIN CONTENT & COMPONENTS
+   ========================================================================== */
 main#content {
     padding: 2rem;
 }
 
-/* Hero Section */
+/* --- Hero Section --- */
 .hero {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -169,7 +203,7 @@ main#content {
     padding: 2rem;
 }
 
-/* Profile Section */
+/* --- Profile Section --- */
 .profile-info {
     position: relative !important;
     display: flex;
@@ -190,9 +224,12 @@ main#content {
 }
 
 .profile-picture {
-    max-width: 300px;
-    width: 200px;
-    height: 200px;
+    max-width: 18.75rem;
+    /* 300px */
+    width: 12.5rem;
+    /* 200px */
+    height: 12.5rem;
+    /* 200px */
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 1rem;
@@ -216,7 +253,7 @@ main#content {
     color: #555;
 }
 
-/* Social Links */
+/* --- Social Links --- */
 .social-links {
     display: flex;
     gap: 0.75rem;
@@ -225,17 +262,18 @@ main#content {
 .social-icon {
     position: relative;
     display: inline-block;
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    /* 48px */
+    height: 3rem;
+    /* 48px */
 }
 
 .social-icon img {
     display: block;
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
 }
 
-/* In dark mode, invert social icon images */
 html.dark-mode .social-icon img {
     filter: invert(1);
 }
@@ -256,8 +294,9 @@ html.dark-mode .social-icon img {
     opacity: 0;
 }
 
-/* Stats Section */
+/* --- Stats Section --- */
 .stats-column {
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -281,8 +320,10 @@ html.dark-mode .social-icon img {
 }
 
 .stat-item:not(:last-child) {
-    padding-bottom: 25px;
-    border-bottom: 0.5px solid var(--accent-color);
+    padding-bottom: 1.6rem;
+    /* converted from 25px */
+    border-bottom: 0.03125rem solid var(--accent-color);
+    /* 0.5px */
 }
 
 .stat-item-emphasize {
@@ -292,17 +333,19 @@ html.dark-mode .social-icon img {
 
 .stat-item:hover {
     color: var(--accent-color);
-    transform: translateY(-4px);
+    transform: translateY(-0.25rem);
+    /* -4px */
 }
 
 .stat-divider {
-    height: 1px;
+    height: 0.0625rem;
+    /* 1px */
     background-color: var(--border-color);
     width: 100%;
     margin: 0.5rem 0;
 }
 
-/* Typed Text Animation */
+/* --- Typed Text Animation --- */
 .typed-text {
     display: inline-block;
     overflow: hidden;
@@ -337,7 +380,79 @@ html.dark-mode .social-icon img {
     border-right: none !important;
 }
 
-/* Responsive Styles */
+/* --- Joke Container --- */
+#joke-button {
+    background-color: var(--accent-color, #c44);
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    /* 4px */
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#joke-button:hover {
+    background-color: #a33;
+}
+
+#joke-container {
+    background-color: #f9f9f9;
+    border: 0.0625rem solid #ccc;
+    /* 1px */
+    padding: 1.5rem;
+    max-width: 31.25rem;
+    /* 500px */
+    margin: 2rem auto;
+    text-align: center;
+    border-radius: 0.375rem;
+    /* 6px */
+}
+
+#setup {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#punchline {
+    font-style: italic;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   DARK MODE SPECIFIC STYLES
+   ========================================================================== */
+html.dark-mode body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+html.dark-mode .description {
+    color: #fff;
+}
+
+.profile-text {
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+html.dark-mode .profile-text {
+    color: #fff;
+}
+
+html.dark-mode h2 {
+    color: #fff;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE STYLES)
+   ========================================================================== */
 @media (max-width: 1024px) {
     .nav-toggle {
         display: flex;
@@ -348,11 +463,14 @@ html.dark-mode .social-icon img {
         position: absolute;
         top: 100%;
         right: 0;
-        width: 200px;
+        width: 12.5rem;
+        /* 200px */
         padding: 1rem;
         background-color: var(--nav-bg);
-        box-shadow: -2px 2px 8px var(--shadow-color);
-        transform: translateY(-20px);
+        box-shadow: -0.125rem 0.125rem 0.5rem var(--shadow-color);
+        /* -2px, 2px, 8px */
+        transform: translateY(-1.25rem);
+        /* -20px */
         opacity: 0;
         pointer-events: none;
         transition: transform 0.3s ease, opacity 0.3s ease;
@@ -380,8 +498,9 @@ html.dark-mode .social-icon img {
 
     .profile-info {
         align-items: center;
-        padding-bottom: 50px;
-        border-bottom: 0.5px solid var(--border-color);
+        padding-bottom: 3.125rem;
+        /* 50px */
+        border-bottom: 0.03125rem solid var(--border-color);
     }
 
     .profile-header {
@@ -401,6 +520,7 @@ html.dark-mode .social-icon img {
     }
 
     .stats-column {
+        text-align: center;
         margin-top: 2rem;
         align-items: center;
         justify-content: center;
@@ -411,8 +531,10 @@ html.dark-mode .social-icon img {
 
 @media (max-width: 400px) {
     .profile-picture {
-        width: 100px;
-        height: 100px;
+        width: 6.25rem;
+        /* 100px */
+        height: 6.25rem;
+        /* 100px */
     }
 
     .name {
@@ -447,7 +569,8 @@ html.dark-mode .social-icon img {
 
     main#content {
         padding: 2rem 6rem;
-        max-width: 1400px;
+        max-width: 87.5rem;
+        /* 1400px */
         margin: 0 auto;
     }
 
@@ -455,74 +578,12 @@ html.dark-mode .social-icon img {
     .profile-header,
     .profile-text,
     .description {
-        max-width: 1400px;
+        max-width: 87.5rem;
+        /* 1400px */
         margin: 0 auto;
     }
 
     .profile-text {
         margin-left: 1.5rem;
     }
-}
-
-html.dark-mode body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-html.dark-mode .description {
-    color: #fff;
-}
-
-.profile-text {
-    margin-left: 1.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-html.dark-mode .profile-text {
-    color: #fff;
-}
-
-html.dark-mode h2 {
-    color: #fff;
-}
-
-
-#joke-button {
-    background-color: var(--accent-color, #c44);
-    border: none;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-#joke-button:hover {
-    background-color: #a33;
-}
-
-#joke-container {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 1.5rem;
-    max-width: 500px;
-    margin: 2rem auto;
-    text-align: center;
-    border-radius: 6px;
-}
-
-#setup {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-#punchline {
-    font-style: italic;
-    color: #555;
-    margin-top: 0.5rem;
 }
