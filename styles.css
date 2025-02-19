@@ -520,3 +520,529 @@ html.dark-mode h2 {
     color: #555;
     margin-top: 0.5rem;
 }
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define CSS variables for light mode */
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --accent-color: #c44;
+    --nav-bg: #fff;
+    --header-bg: #fff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode overrides when .dark-mode is applied to <html> */
+html.dark-mode {
+    --bg-color: #222;
+    --text-color: #ddd;
+    --nav-bg: #222;
+    --header-bg: #222;
+}
+
+/* Base HTML & Body */
+html {
+    scroll-behavior: smooth;
+    max-height: max-content;
+    color-scheme: light dark;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Header & Navbar */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--header-bg);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--nav-bg);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-container {
+    position: relative;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-color);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.nav-toggle .hamburger {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 4px 0;
+    transition: all 0.3s;
+}
+
+#theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--text-color);
+    border-radius: 20px;
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle .sun,
+#theme-toggle .moon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+#theme-toggle:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+html:not(.dark-mode) #theme-toggle .sun {
+    display: none;
+}
+
+html:not(.dark-mode) #theme-toggle .moon {
+    display: inline;
+}
+
+html.dark-mode #theme-toggle .sun {
+    display: inline;
+}
+
+html.dark-mode #theme-toggle .moon {
+    display: none;
+}
+
+html.dark-mode #theme-toggle {
+    background: linear-gradient(45deg, #555, #333);
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+html.dark-mode #theme-toggle:hover {
+    background: var(--accent-color);
+    color: #fff
+}
+
+main#content {
+    padding: 2rem;
+}
+
+/* Hero Section */
+.hero {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    min-height: calc(100vh - 80px);
+    padding: 2rem;
+}
+
+/* Profile Section */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-text {
+    margin-left: 1.5rem;
+}
+
+.profile-picture {
+    max-width: 300px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.name {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.description {
+    text-align: justify;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-icon {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+}
+
+.social-icon img {
+    display: block;
+    width: 48px;
+    height: 48px;
+}
+
+/* In dark mode, invert social icon images */
+html.dark-mode .social-icon img {
+    filter: invert(1);
+}
+
+.social-icon .red {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover .red {
+    opacity: 1;
+}
+
+.social-icon:hover .default {
+    opacity: 0;
+}
+
+/* Stats Section */
+.stats-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 70%;
+    margin-left: auto;
+    padding-top: 3rem;
+}
+
+.stats-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.stat-item {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0.75rem 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.stat-item:not(:last-child) {
+    padding-bottom: 25px;
+    border-bottom: 0.5px solid var(--accent-color);
+}
+
+.stat-item-emphasize {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.stat-item:hover {
+    color: var(--accent-color);
+    transform: translateY(-4px);
+}
+
+.stat-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+/* Typed Text Animation */
+.typed-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid var(--accent-color);
+    animation: typing 4s steps(20, end) forwards, blink-cursor 0.75s step-end 4;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-cursor {
+    50% {
+        border-color: transparent;
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+
+.typed-text::after {
+    animation: none;
+    content: '';
+    border-right: none !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+        background-color: var(--nav-bg);
+        box-shadow: -2px 2px 8px var(--shadow-color);
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-links.show {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0;
+    }
+
+    .hero {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 2rem 1rem;
+        min-height: unset;
+    }
+
+    .profile-info {
+        align-items: center;
+        padding-bottom: 50px;
+        border-bottom: 0.5px solid var(--border-color);
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-text {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .description {
+        margin: 0 auto;
+        max-width: 60%;
+        margin-bottom: 1.5rem;
+    }
+
+    .stats-column {
+        margin-top: 2rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 2rem 6rem;
+        min-height: unset;
+    }
+
+    .profile-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .social-links {
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .stats-column {
+        width: 80%;
+        margin-left: auto;
+        margin-right: 0;
+        padding-top: 2rem;
+        padding-bottom: 0;
+    }
+
+    main#content {
+        padding: 2rem 6rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .profile-info,
+    .profile-header,
+    .profile-text,
+    .description {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .profile-text {
+        margin-left: 1.5rem;
+    }
+}
+
+html.dark-mode body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+html.dark-mode .description {
+    color: #fff;
+}
+
+.profile-text {
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+html.dark-mode .profile-text {
+    color: #fff;
+}
+
+html.dark-mode h2 {
+    color: #fff;
+}
+
+
+#joke-button {
+    background-color: var(--accent-color, #c44);
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#joke-button:hover {
+    background-color: #a33;
+}
+
+#joke-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 1.5rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    text-align: center;
+    border-radius: 6px;
+}
+
+#setup {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: black;
+}
+
+#punchline {
+    font-style: italic;
+    color: #555;
+    margin-top: 0.5rem;
+}

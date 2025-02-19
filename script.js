@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     htmlElement.classList.toggle("dark-mode");
   });
 
-  // Read query parameter "page" (default to "home.html" if not provided)
   const urlParams = new URLSearchParams(window.location.search);
   const page = urlParams.get("page") || "home.html";
   loadPage(page);
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
       updateActiveLink(url);
       loadPage(url);
       history.pushState({ page: url }, "", this.getAttribute("href"));
-      // Close the hamburger menu on mobile if open
       if (
         window.innerWidth < 768 &&
         navLinksContainer.classList.contains("show")
@@ -116,19 +114,49 @@ document.addEventListener("DOMContentLoaded", function () {
     const jokeButton = document.getElementById("joke-button");
     const setupEl = document.getElementById("setup");
     const punchlineEl = document.getElementById("punchline");
+    const jokeContainer = document.getElementById("joke-container");
 
     if (jokeButton) {
+      jokeButton.addEventListener("mouseover", () => {
+        jokeButton.style.transform = "scale(1.1)";
+        jokeButton.style.transition = "transform 0.3s ease";
+      });
+
+      jokeButton.addEventListener("mouseout", () => {
+        jokeButton.style.transform = "scale(1)";
+      });
+
+      if (jokeContainer) {
+        jokeContainer.addEventListener("mouseover", () => {
+          setupEl.style.color = "#c44";
+          setupEl.style.transition = "color 0.3s ease";
+        });
+
+        jokeContainer.addEventListener("mouseout", () => {
+          setupEl.style.color = "";
+        });
+      }
       jokeButton.addEventListener("click", () => {
+        jokeButton.textContent = "Loading...";
+        jokeButton.disabled = true;
+
         fetch("https://official-joke-api.appspot.com/random_joke")
           .then((response) => response.json())
           .then((data) => {
             setupEl.textContent = data.setup;
-            punchlineEl.textContent = data.punchline;
+            setTimeout(() => {
+              punchlineEl.textContent = data.punchline;
+              punchlineEl.style.opacity = "1";
+            }, 1000);
+            jokeButton.textContent = "Get a Joke";
+            jokeButton.disabled = false;
           })
           .catch((error) => {
             console.error("Error fetching joke:", error);
             setupEl.textContent = "Oops, something went wrong!";
             punchlineEl.textContent = "";
+            jokeButton.textContent = "Get a Joke";
+            jokeButton.disabled = false;
           });
       });
     }
