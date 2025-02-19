@@ -277,19 +277,14 @@ main#content {
     position: relative;
     display: inline-block;
     width: 3rem;
-    /* 48px */
     height: 3rem;
-    /* 48px */
 }
 
 .social-icon img {
     display: block;
     width: 3rem;
     height: 3rem;
-}
-
-html.dark-mode .social-icon img {
-    filter: invert(1);
+    transition: opacity 0.3s ease;
 }
 
 .social-icon .red {
@@ -297,7 +292,6 @@ html.dark-mode .social-icon img {
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 .social-icon:hover .red {
@@ -484,9 +478,7 @@ html.dark-mode .social-icon img {
     max-width: 80rem;
     margin: 3rem auto;
     margin-top: 0.5rem;
-    /* Remove min-height so the container fits content naturally */
     margin-bottom: 3rem;
-    /* Extra space at bottom */
 }
 
 /* Timeline Title */
@@ -623,6 +615,14 @@ html.dark-mode .contact-section {
     border: 1px solid #444;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
     color: var(--text-color);
+}
+
+html.dark-mode .social-icon .default {
+    filter: invert(1);
+}
+
+html.dark-mode .social-icon .red {
+    filter: none;
 }
 
 /* ==========================================================================
