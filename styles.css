@@ -365,6 +365,33 @@ html.dark-mode .social-icon img {
 }
 
 
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-cursor {
+    50% {
+        border-color: transparent;
+    }
+    
+    100% {
+        border-color: transparent;
+    }
+}
+
+.typed-text::after {
+    animation: none;
+    content: '';
+    border-right: none !important;
+}
+
 /* Contact Page Styles */
 .contact-section {
     max-width: 40rem;
@@ -374,6 +401,39 @@ html.dark-mode .social-icon img {
     border-radius: 0.5rem;
     box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
     text-align: center;
+}
+
+/* ==========================================================================
+   MORE INFO SECTION (New Content Below Hero)
+   ========================================================================== */
+.more-info {
+    max-width: 40rem;              /* Limits the width for readability */
+    margin: 3rem auto;             /* Centers the section and adds vertical spacing */
+    padding: 2rem;                 /* Adds internal spacing */
+    background-color: var(--nav-bg);/* Uses nav background color for a complementary look */
+    border-radius: 0.5rem;         /* Rounded corners for a card-like appearance */
+    box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
+    text-align: left;
+}
+
+.more-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.more-info h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.more-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
 }
 
 .contact-section h1 {
@@ -397,33 +457,6 @@ html.dark-mode .social-icon img {
 .contact-section a:hover {
     text-decoration: underline;
 }
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink-cursor {
-    50% {
-        border-color: transparent;
-    }
-
-    100% {
-        border-color: transparent;
-    }
-}
-
-.typed-text::after {
-    animation: none;
-    content: '';
-    border-right: none !important;
-}
-
 /* --- Joke Container --- */
 #joke-button {
     background-color: var(--accent-color, #c44);
