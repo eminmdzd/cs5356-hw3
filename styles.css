@@ -213,7 +213,7 @@ main#content {
     grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
     align-items: start;
-    min-height: calc(100vh - 80px);
+    /* min-height: calc(100vh - 80px); */
     padding: 2rem;
 }
 
@@ -336,7 +336,7 @@ html.dark-mode .social-icon img {
 .stat-item:not(:last-child) {
     padding-bottom: 1.6rem;
     /* converted from 25px */
-    border-bottom: 0.03125rem solid var(--accent-color);
+    border-bottom: 0.03125rem solid var(--border-color);
     /* 0.5px */
 }
 
@@ -348,6 +348,7 @@ html.dark-mode .social-icon img {
 .stat-item:hover {
     color: var(--accent-color);
     transform: translateY(-0.25rem);
+    border-bottom: 0.03125rem solid var(--accent-color);
     /* -4px */
 }
 
@@ -509,7 +510,7 @@ html.dark-mode .social-icon img {
     position: relative;
     max-width: 80rem;
     margin: 3rem auto;
-    padding: 2rem 0;
+    margin-top: 0.5rem;
     /* Remove min-height so the container fits content naturally */
     margin-bottom: 3rem;
     /* Extra space at bottom */
@@ -721,7 +722,7 @@ html.dark-mode h2 {
         text-align: center;
         width: 100%;
         padding-bottom: 3rem;
-        /* border-bottom: 0.03125rem solid var(--border-color); */
+        border-bottom: 0.03125rem solid var(--border-color);
     }
 
         .timeline-item {
