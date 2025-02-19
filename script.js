@@ -161,6 +161,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
       jokeButton.addEventListener("click", () => {
+        setupEl.textContent = "";
+        punchlineEl.textContent = "";
+        punchlineEl.style.opacity = "0";
         jokeButton.textContent = "Loading...";
         jokeButton.disabled = true;
 

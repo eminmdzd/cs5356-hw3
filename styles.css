@@ -625,37 +625,43 @@ html.dark-mode .social-icon .red {
     filter: none;
 }
 
+html.dark-mode #setup,
+html.dark-mode #punchline {
+    color: black;
+}
+
 /* ==========================================================================
    MEDIA QUERIES (RESPONSIVE STYLES)
    ========================================================================== */
 @media (max-width: 1024px) {
     .nav-toggle {
-        display: flex;
-    }
-
-    .nav-links {
-        flex-direction: column;
+            display: flex;
+        }
+    
+        .nav-links {
+            flex-direction: column;
         position: absolute;
         top: 100%;
-        right: 0;
-        width: 12.5rem;
+            right: 0;
+            width: 12.5rem;
         /* 200px */
-        padding: 1rem;
-        background-color: var(--nav-bg);
-        box-shadow: -0.125rem 0.125rem 0.5rem var(--shadow-color);
+            padding: 1rem;
+            background-color: var(--nav-bg);
+            box-shadow: -0.125rem 0.125rem 0.5rem var(--shadow-color);
         /* -2px, 2px, 8px */
         transform: translateY(-1.25rem);
         /* -20px */
-        opacity: 0;
-        pointer-events: none;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .nav-links.show {
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+    
+        .nav-links.show {
         transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-    }
+            opacity: 1;
+            pointer-events: auto;
+        }
 
     .nav-links a {
         padding: 0.5rem 0;
