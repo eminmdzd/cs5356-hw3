@@ -8,8 +8,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const themeToggle = document.getElementById("theme-toggle");
   const htmlElement = document.documentElement;
 
+  // Retrieve theme preference from localStorage
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    htmlElement.classList.add("dark-mode");
+  }
+
   themeToggle.addEventListener("click", () => {
     htmlElement.classList.toggle("dark-mode");
+    // Store preference in localStorage
+    if (htmlElement.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
   });
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -118,10 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
-        console.log(entry.target, entry.isIntersecting);
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          obs.unobserve(entry.target); // Unobserve so it stays active
+          obs.unobserve(entry.target);
         }
       });
     }, observerOptions);
