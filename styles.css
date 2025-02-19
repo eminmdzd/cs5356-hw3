@@ -575,12 +575,12 @@ main#content {
     border: 0.125rem solid var(--nav-bg);
     border-radius: 50%;
     top: 1.5rem;
-    right: -0.5rem;
+    right: -0.63rem;
     z-index: 1;
 }
 
 .timeline-item.right::before {
-    left: -0.5rem;
+    left: -0.63rem;
 }
 
 /* ==========================================================================
