@@ -402,43 +402,16 @@ html.dark-mode .social-icon img {
     max-width: 40rem;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: var(--nav-bg);
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
     border-radius: 0.5rem;
-    box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s ease;
 }
 
-/* ==========================================================================
-   MORE INFO SECTION (New Content Below Hero)
-   ========================================================================== */
-.more-info {
-    max-width: 40rem;              /* Limits the width for readability */
-    margin: 3rem auto;             /* Centers the section and adds vertical spacing */
-    padding: 2rem;                 /* Adds internal spacing */
-    background-color: var(--nav-bg);/* Uses nav background color for a complementary look */
-    border-radius: 0.5rem;         /* Rounded corners for a card-like appearance */
-    box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
-    text-align: left;
-}
-
-.more-info h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-.more-info h3 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-.more-info p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
+.contact-section:hover {
+    transform: translateY(-0.25rem);
 }
 
 .contact-section h1 {
@@ -643,6 +616,13 @@ html.dark-mode .profile-text {
 
 html.dark-mode h2 {
     color: #fff;
+}
+
+html.dark-mode .contact-section {
+    background-color: #333;
+    border: 1px solid #444;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    color: var(--text-color);
 }
 
 /* ==========================================================================
