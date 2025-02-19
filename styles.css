@@ -705,22 +705,26 @@ html.dark-mode .social-icon .red {
         border-bottom: 0.03125rem solid var(--border-color);
     }
 
-        .timeline-item {
-            width: 100%;
-            padding-left: 2.5rem;
-            padding-right: 2.5rem;
-            text-align: left;
-            left: 0 !important;
-        }
-    
-        .timeline-item::before {
-            left: -1.25rem;
-            top: 1rem;
-        }
-    
-        .timeline::after {
-            left: 2rem;
-        }
+   .timeline-item,
+   .timeline-item .timeline-content {
+       text-align: left !important;
+   }
+
+   .timeline-item {
+       width: 100%;
+       padding-left: 2.5rem;
+       padding-right: 2.5rem;
+       left: 0 !important;
+   }
+
+   .timeline-item::before {
+       left: -1.25rem;
+       top: 1rem;
+   }
+
+   .timeline::after {
+       left: 2rem;
+   }
 }
 
 @media (max-width: 400px) {
