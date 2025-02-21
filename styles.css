@@ -165,12 +165,12 @@ footer {
     }
 }
 
-@media (hover: none) {
+/* @media (hover: none) {
     #theme-toggle:hover {
         background-color: transparent;
         color: var(--text-color);
     }
-}
+} */
 
 /* Toggle Icon Visibility */
 html:not(.dark-mode) #theme-toggle .sun {
@@ -525,13 +525,13 @@ main#content {
 }
 
 /* Left Items */
-.timeline-item.left {
+.timeline-item:nth-child(even) {
     left: 0;
     text-align: right;
 }
 
 /* Right Items */
-.timeline-item.right {
+.timeline-item:nth-child(odd){
     left: 50%;
     text-align: left;
 }
@@ -571,8 +571,14 @@ main#content {
     font-weight: bold;
 }
 
-/* Decorative Dot */
+/* 1) Remove the universal dot placement */
 .timeline-item::before {
+    content: none;
+    /* or display: none; */
+}
+
+/* 2) Dot on the right side for .timeline-item:nth-child(even) */
+.timeline-item:nth-child(even)::before {
     content: '';
     position: absolute;
     width: 1rem;
@@ -585,8 +591,18 @@ main#content {
     z-index: 1;
 }
 
-.timeline-item.right::before {
+/* 3) Dot on the left side for .timeline-item:nth-child(odd) */
+.timeline-item:nth-child(odd)::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--accent-color);
+    border: 0.125rem solid var(--nav-bg);
+    border-radius: 50%;
+    top: 1.5rem;
     left: -0.63rem;
+    z-index: 1;
 }
 
 /* ==========================================================================
@@ -725,7 +741,7 @@ html.dark-mode #punchline {
 
    .timeline-item {
        width: 100%;
-       padding-left: 2.5rem;
+       padding-left: 4.5rem;
        padding-right: 2.5rem;
        left: 0 !important;
    }
