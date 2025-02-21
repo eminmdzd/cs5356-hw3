@@ -40,6 +40,7 @@ html {
     color-scheme: light dark;
     background-color: var(--bg-color);
     color: var(--text-color);
+    overflow-y: scroll;
 }
 
 body {
