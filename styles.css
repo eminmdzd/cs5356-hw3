@@ -495,17 +495,29 @@ main#content {
     color: var(--text-color);
 }
 
-/* Vertical Line */
+/* Solid vertical line from top until the start of the last item */
 .timeline::after {
     content: '';
     position: absolute;
     width: 0.1875rem;
-    /* 3px */
     background-color: var(--accent-color);
     top: 7rem;
-    bottom: 0;
+    bottom: calc(100% - 90%);
     left: 50%;
     transform: translateX(-50%);
+}
+
+/* Dashed vertical line from the last item's start to the bottom */
+.timeline::before {
+    content: '';
+    position: absolute;
+    /* width: 0.1875rem; */
+    top: 90.2%;
+    /* background-color: var(--accent-color); */
+    border-right: 0.1890rem dashed var(--accent-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-49.9%);
 }
 
 /* Timeline Item (initial state) */
@@ -551,6 +563,9 @@ main#content {
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
 }
 
+.timeline-item:last-child .timeline-content {
+    border: 0.125rem dashed var(--accent-color);
+}
 .timeline-content h3 {
     margin-top: 0;
     font-size: 1.5rem;
@@ -574,7 +589,6 @@ main#content {
 /* 1) Remove the universal dot placement */
 .timeline-item::before {
     content: none;
-    /* or display: none; */
 }
 
 /* 2) Dot on the right side for .timeline-item:nth-child(even) */
@@ -601,10 +615,14 @@ main#content {
     border: 0.125rem solid var(--nav-bg);
     border-radius: 50%;
     top: 1.5rem;
-    left: -0.63rem;
+    left: -0.62rem;
     z-index: 1;
 }
 
+.timeline .timeline-item:last-child::before {
+    background-color: transparent !important;
+    border: 0.125rem dashed var(--accent-color) !important;
+}
 /* ==========================================================================
    DARK MODE SPECIFIC STYLES
    ========================================================================== */
@@ -752,6 +770,10 @@ html.dark-mode #punchline {
    }
 
    .timeline::after {
+       left: 2rem;
+   }
+
+   .timeline::before {
        left: 2rem;
    }
 }
