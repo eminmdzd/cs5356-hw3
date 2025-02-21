@@ -123,6 +123,13 @@ header {
     transition: all 0.3s;
 }
 
+@media (hover: none) {
+    #theme-toggle:hover {
+        background-color: transparent !important;
+        /* color: var(--text-color) !important; */
+    }
+}
+
 footer {
     background-color: var(--header-bg);
     padding: 1rem 2rem;
@@ -659,11 +666,17 @@ main#content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: var(--card-bg);
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
     transition: transform 0.3s ease, background-color 0.3s ease;
+    /* Add fixed dimensions */
+    width: 100%;
+    height: 120px;
+    /* Set a consistent height */
+    aspect-ratio: 1;
 }
 
 .skill-item:hover {
@@ -727,7 +740,10 @@ html.dark-mode .social-icon .red {
 html.dark-mode #setup,
 html.dark-mode #punchline {
     color: var(--text-color);
-    /* Ensures visibility in dark mode */
+}
+
+html.dark-mode .category h2 {
+    color: #c44;
 }
 
 /* ==========================================================================
@@ -735,11 +751,11 @@ html.dark-mode #punchline {
    ========================================================================== */
 @media (max-width: 1024px) {
     .nav-toggle {
-            display: flex;
-        }
+        display: flex;
+    }
     
-        .nav-links {
-            flex-direction: column;
+    .nav-links {
+        flex-direction: column;
         position: absolute;
         top: 100%;
             right: 0;
@@ -755,13 +771,13 @@ html.dark-mode #punchline {
             pointer-events: none;
             transition: transform 0.3s ease, opacity 0.3s ease;
             z-index: 1000;
-        }
-    
-        .nav-links.show {
+    }
+
+    .nav-links.show {
         transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
+        opacity: 1;
+        pointer-events: auto;
+    }
 
     .nav-links a {
         padding: 0.5rem 0;
@@ -835,6 +851,29 @@ html.dark-mode #punchline {
    .timeline::before {
        left: 2rem;
    }
+   .skills-grid {
+       grid-template-columns: repeat(2, 1fr);
+       /* Show 2 items per row on vertical screens */
+       gap: 1rem;
+   }
+
+   .skill-item {
+       width: 100%;
+       height: 120px;
+   }
+
+   .skill-icon {
+       width: 40px;
+       /* Slightly smaller icons for better spacing */
+       height: 40px;
+   }
+
+   .skill-label {
+       font-size: 0.9rem;
+       /* Slightly smaller text for better fit */
+       margin-top: 0.5rem;
+   }
+
 }
 
 @media (max-width: 400px) {
@@ -847,6 +886,11 @@ html.dark-mode #punchline {
 
     .name {
         font-size: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        /* Single column for very narrow screens */
     }
 }
 
