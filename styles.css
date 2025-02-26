@@ -438,16 +438,19 @@ main#content {
     text-decoration: underline;
 }
 /* --- API page --- */
+/* Ensure API request section is at the top */
 .api-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    /* Align content to the top */
     align-items: center;
-    height: 100vh;
-    /* Ensure full viewport height */
-    text-align: center;
+    min-height: 50vh;
+    /* Ensure it has enough space */
+    padding: 2rem;
 }
 
+/* Style joke container */
 #joke-container {
     background-color: var(--card-bg);
     padding: 1.5rem;
@@ -456,8 +459,10 @@ main#content {
     margin-bottom: 1rem;
     max-width: 400px;
     width: 90%;
+    text-align: center;
 }
 
+/* Button improvements */
 #joke-button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -471,6 +476,26 @@ main#content {
 
 #joke-button:hover {
     background-color: #a33;
+}
+
+/* Improve layout of the answers section */
+.answers-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem var(--shadow-color);
+}
+
+.answers-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: var(--card-hover-bg);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0.5rem;
 }
 
 #setup {
